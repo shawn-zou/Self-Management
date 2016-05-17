@@ -1,5 +1,4 @@
 <?php
-
 namespace frontend\controllers;
 
 use Yii;
@@ -10,7 +9,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * @author shawn-zou <157962718@qq.com> 2016年5月17日
+ * 用户相关操作控制器
  */
 class UserController extends BaseController
 {
@@ -27,6 +27,28 @@ class UserController extends BaseController
                 ],
             ],
         ];
+    }
+
+    /**
+     * 注册功能，用yii改造中
+     */
+    public function actionSignup()
+    {
+    	//选择basis作为layout
+    	$this->layout = 'basis';
+
+    	$model = new \frontend\models\SignupForm();
+    	if ($model->load(Yii::$app->request->post())) {
+    		if ($user = $model->signup()) {
+    			if (Yii::$app->getUser()->login($user)) {
+    				return $this->goHome();
+    			}
+    		}
+    	}
+
+    	return $this->render('signup', [
+    		'model' => $model,
+    	]);
     }
 
     /**
