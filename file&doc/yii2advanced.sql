@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-05-17 13:45:07
+Date: 2016-05-17 15:21:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,9 +46,9 @@ CREATE TABLE `yiiad_user` (
   `login_ip` varchar(20) DEFAULT NULL COMMENT '上次登录ip',
   `login_time` tinyint(10) unsigned DEFAULT NULL COMMENT '上次登录时间',
   `is_delete` int(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否被用户删除；0:未被删除;1:已删除;',
-  `user_education_id` text COMMENT '这个字段提示需要这个张，暂定user_education',
-  `user_job_id` text COMMENT '这个字段提示需要这张表，暂定uer_job',
-  `user_tag_id` text COMMENT '提示需要标签表，暂定user_tags,上限数量暂定5个',
-  `user_shipping_address` text COMMENT '提示需要这张表，暂定shipping_address',
+  `user_education_id` text COMMENT '暂定user_education表中，自己教育信息的id的json，查询比较快',
+  `user_job_id` text COMMENT '暂定user_job中个人职业信息id的json，查询比较快',
+  `user_tag_id` varchar(255) DEFAULT NULL COMMENT '暂定user_tags中个人标签id的json，查询比较快，上限数量暂定5个',
+  `user_shipping_address` varchar(255) DEFAULT NULL COMMENT '暂定user_shipping_address表中个人收货地址的id的json，查询比较快',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='前台用户表';
