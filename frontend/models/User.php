@@ -3,9 +3,10 @@ namespace frontend\models;
 
 use Yii;
 use frontend\models\Base;
+use yii\web\IdentityInterface;
 
 /**
- * @author shawn-zou <157962718@qq.com> 2016-5-17
+ * @author shawn-zou <1579627187@qq.com> 2016年5月18日
  *
  * This is the model class for table "{{%user}}".
  *
@@ -40,8 +41,14 @@ use frontend\models\Base;
  * @property string $user_tag_id
  * @property string $user_shipping_address
  */
-class User extends Base
+class User extends Base implements IdentityInterface
 {
+    //账号禁用状态
+    const STATUS_DELETED = 0;
+
+    //账号正常状态
+    const STATUS_ACTIVE = 1;
+
     /**
      * @inheritdoc
      */
@@ -107,4 +114,15 @@ class User extends Base
             'user_shipping_address' => '暂定user_shipping_address表中个人收货地址的id的json，查询比较快',
         ];
     }
+
+    //接口IdentityInterface继承的几个方法，暂不实现
+    public static function findIdentity($id);
+
+    public static function findIdentityByAccessToken($token, $type = null);
+
+    public function getId();
+
+    public function getAuthKey();
+
+    public function validateAuthKey($authKey);
 }

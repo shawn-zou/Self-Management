@@ -1,6 +1,6 @@
 <?php
 /**
- * @author shawn-zou <157962718@qq.com> 2016年5月17日
+ * @author shawn-zou <1579627187@qq.com> 2016年5月18日
  * 注册页面
  */
 /* @var $this yii\web\View */
@@ -9,6 +9,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
 $this->title = '注册';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,12 +21,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
 
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-                <?= $form->field($model, 'email') ?>
-                <?= $form->field($model, 'password')->passwordInput() ?>
-	                <div class="form-group">
-	                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-	                </div>
+
+                <?= $form->field($model, 'user_name')->textInput(['autofocus' => true]) ?>
+
+                <?= $form->field($model, 'user_email') ?>
+
+                <?= $form->field($model, 'user_pwd')->passwordInput() ?>
+
+				<?= $form->field($model, 'pwd_confirm')->passwordInput() ?>
+
+				<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                ]) ?>
+
+                <div class="form-group">
+                    <?= Html::submitButton('注册', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                </div>
             <?php ActiveForm::end(); ?>
 
         </div>
