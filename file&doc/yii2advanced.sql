@@ -10,10 +10,33 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-05-17 15:21:48
+Date: 2016-05-18 22:25:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for yiiad_message
+-- ----------------------------
+DROP TABLE IF EXISTS `yiiad_message`;
+CREATE TABLE `yiiad_message` (
+  `id` int(11) NOT NULL DEFAULT '0' COMMENT '关联source_message表的id',
+  `language` varchar(16) NOT NULL DEFAULT '' COMMENT '语种;类似en-US',
+  `translation` text COMMENT '与source_message关联后显示的内容',
+  PRIMARY KEY (`id`,`language`),
+  CONSTRAINT `fk_message_source_message` FOREIGN KEY (`id`) REFERENCES `yiiad_source_message` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='根据source_message替换语言内容的表';
+
+-- ----------------------------
+-- Table structure for yiiad_source_message
+-- ----------------------------
+DROP TABLE IF EXISTS `yiiad_source_message`;
+CREATE TABLE `yiiad_source_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `category` varchar(32) DEFAULT NULL COMMENT '分类;配置组件时的参数，初始为lang',
+  `message` text COMMENT '源语言的内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='源语言内容表，根据自增id匹配message表的id字段再匹配语种language';
 
 -- ----------------------------
 -- Table structure for yiiad_user
