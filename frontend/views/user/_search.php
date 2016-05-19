@@ -25,13 +25,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_pwd_hash') ?>
 
+    <?php // echo $form->field($model, 'user_pwd_reset_token') ?>
+
+    <?php // echo $form->field($model, 'auth_key') ?>
+
     <?php // echo $form->field($model, 'user_email') ?>
 
-    <?php // echo $form->field($model, 'email_code') ?>
+    <?php // echo $form->field($model, 'user_email_activate_token') ?>
 
     <?php // echo $form->field($model, 'user_email_status') ?>
 
     <?php // echo $form->field($model, 'user_phonenum') ?>
+
+    <?php // echo $form->field($model, 'user_phone_activate_token') ?>
 
     <?php // echo $form->field($model, 'user_phone_status') ?>
 
@@ -57,15 +63,17 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'user_img') ?>
 
-    <?php // echo $form->field($model, 'user_creatime') ?>
+    <?php // echo $form->field($model, 'create_time') ?>
 
-    <?php // echo $form->field($model, 'user_updatime') ?>
+    <?php // echo $form->field($model, 'update_time') ?>
 
     <?php // echo $form->field($model, 'login_ip') ?>
 
     <?php // echo $form->field($model, 'login_time') ?>
 
     <?php // echo $form->field($model, 'is_delete') ?>
+
+    <?php // echo $form->field($model, 'is_forbidden') ?>
 
     <?php // echo $form->field($model, 'user_education_id') ?>
 
@@ -76,8 +84,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'user_shipping_address') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('lang', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('lang', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

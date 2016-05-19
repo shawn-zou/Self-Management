@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model frontend\models\User */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('lang', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('lang', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('lang', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('lang', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -33,10 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_pwd',
             'salt',
             'user_pwd_hash',
+            'user_pwd_reset_token',
+            'auth_key',
             'user_email:email',
-            'email_code:email',
+            'user_email_activate_token:email',
             'user_email_status:email',
             'user_phonenum',
+            'user_phone_activate_token',
             'user_phone_status',
             'is_status',
             'user_nickname',
@@ -49,11 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_introduction:ntext',
             'user_qq',
             'user_img',
-            'user_creatime:datetime',
-            'user_updatime:datetime',
+            'create_time:datetime',
+            'update_time:datetime',
             'login_ip',
             'login_time:datetime',
             'is_delete',
+            'is_forbidden',
             'user_education_id:ntext',
             'user_job_id:ntext',
             'user_tag_id',

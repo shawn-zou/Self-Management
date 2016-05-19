@@ -20,13 +20,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_pwd_hash')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'user_pwd_reset_token')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'user_email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email_code')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'user_email_activate_token')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_email_status')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_phonenum')->textInput() ?>
+
+    <?= $form->field($model, 'user_phone_activate_token')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_phone_status')->textInput(['maxlength' => true]) ?>
 
@@ -52,15 +58,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_img')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_creatime')->textInput() ?>
+    <?= $form->field($model, 'create_time')->textInput() ?>
 
-    <?= $form->field($model, 'user_updatime')->textInput() ?>
+    <?= $form->field($model, 'update_time')->textInput() ?>
 
     <?= $form->field($model, 'login_ip')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'login_time')->textInput() ?>
 
     <?= $form->field($model, 'is_delete')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'is_forbidden')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_education_id')->textarea(['rows' => 6]) ?>
 
@@ -71,7 +79,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'user_shipping_address')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('lang', 'Create') : Yii::t('lang', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
