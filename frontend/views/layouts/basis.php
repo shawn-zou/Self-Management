@@ -1,14 +1,12 @@
 <?php
 /**
- * @author shawn-zou <157962718@qq.com> 2016年5月17日
+ * @author shawn-zou <157962718@qq.com> 2016年5月21日
  * 用于登录、注册、找回密码等未登录时的前端layout
  */
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use frontend\assets\BasisAsset;
 use common\widgets\Alert;
 

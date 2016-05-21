@@ -30,13 +30,11 @@ class SignupForm extends Model
             ['user_email', 'required'],
             ['user_email', 'email'],
             ['user_email', 'string', 'max' => 255],
-            ['user_email', 'unique', 'targetClass' => '\common\models\User', 'message' => '该邮箱已被使用！'],
+            ['user_email', 'unique', 'targetClass' => '\frontend\models\User', 'message' => '该邮箱已被使用！'],
 
-            ['user_pwd', 'required'],
-            ['user_pwd', 'string', 'min' => 6, 'max' => 16],
-
-            ['pwd_confirm', 'required'],
-            ['pwd_confirm', 'string', 'min' => 6, 'max' => 16],
+            [['user_pwd', 'pwd_confirm'], 'required'],
+            [['user_pwd', 'pwd_confirm'], 'string', 'min' => 6, 'max' => 16],
+        	[['user_pwd', 'pwd_confirm'], 'compare', 'compareAttribute' => 'user_pwd'],
 
             //验证码必须正确输入
             ['verifyCode', 'captcha'],
@@ -70,9 +68,9 @@ class SignupForm extends Model
         }
 
         $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
+        $user->user_name = $this->user_name;
+        $user->user_email = $this->user_email;
+        $user->setPassword($this->user_pwd);
         $user->generateAuthKey();
 
         return $user->save() ? $user : null;

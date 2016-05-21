@@ -5,7 +5,7 @@
  */
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
+/* @var $objSignup \frontend\models\SignupForm */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -22,15 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                <?= $form->field($model, 'user_name')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($objSignup, 'user_name')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'user_email') ?>
+                <?= $form->field($objSignup, 'user_email') ?>
 
-                <?= $form->field($model, 'user_pwd')->passwordInput() ?>
+                <?= $form->field($objSignup, 'user_pwd')->passwordInput() ?>
 
-				<?= $form->field($model, 'pwd_confirm')->passwordInput() ?>
+				<?= $form->field($objSignup, 'pwd_confirm')->passwordInput() ?>
 
-				<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+				<?= $form->field($objSignup, 'verifyCode')->widget(Captcha::className(), [
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                 ]) ?>
 

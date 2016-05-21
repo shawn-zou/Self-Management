@@ -10,12 +10,23 @@ return [
 	//设置跳转的页面，$this->goHome()方法要的配置
 	//'homeUrl' => '',
 
+	//在bootstrapping期间就会就在的组件，这里添加log组件方便及时、整体的运用log组件
+	'bootstrap' => ['log'],
 	//组件配置
     'components' => [
     	//缓存配置
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+    	//日志配置
+    	/* 'log' => [
+    		'targets' => [
+    			[
+    				'class' => 'yii\log\DbTarget',
+    				//'levels' => ['error', 'warning', 'info', 'trace', 'profile'],	//所有日志等级，为空默认所有
+    			],
+    		],
+    	], */
     	//国际化I18N配置
     	'i18n' => [
     		//必须是translations

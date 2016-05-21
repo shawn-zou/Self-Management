@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\User;
+use frontend\models\SignupForm;
 use frontend\models\UserSearch;
 use frontend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
@@ -13,6 +14,27 @@ use yii\web\NotFoundHttpException;
  */
 class UserController extends BaseController
 {
+	/**
+	 * 注册用户功能
+	 */
+	public function actionSignup()
+	{
+		$this->layout = 'basis';
+
+		$objSignup = new SignupForm();
+		if ($objSignup->load(Yii::$app->request->post())) {
+			if ($user = $objSignup->signup()) {
+				/* if (Yii::$app->getUser()->login($user)) {
+					return $this->goHome();
+				} */
+			}
+		}
+
+		return $this->render('signup', [
+			'objSignup' => $objSignup,
+		]);
+	}
+
     /**
      * Lists all User models.
      * @return mixed
