@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -25,7 +26,7 @@ class BaseController extends Controller
 			 */
 			'access' => [
 				'class' => AccessControl::className(),
-				//'only' => [''],
+				//'only' => [''],如果设置了only，则only以外的操作将无条件获得授权
 				//'except' => ['site' ,'user'],
 				'rules' => [
 					[
@@ -33,6 +34,10 @@ class BaseController extends Controller
 						'controllers' => ['user', 'site'],
 						'allow' => true,
 						'roles' => ['?'],
+						'denyCallback' => function($rule, $action)
+						{
+							throw new ForbiddenHttpException('亲爱的用户，您暂时无法进行该操作！');
+						}
 					],
 				],
 			],

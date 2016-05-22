@@ -10,10 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-05-21 19:43:25
+Date: 2016-05-22 16:52:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for yiiad_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `yiiad_admin`;
+CREATE TABLE `yiiad_admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员编号',
+  `admin_name` varchar(50) NOT NULL COMMENT '管理员账号',
+  `admin_pwd_hash` char(60) NOT NULL COMMENT '管理员密码hash',
+  `auth_key` char(32) DEFAULT NULL COMMENT '自动登录验证',
+  `real_name` varchar(15) DEFAULT NULL COMMENT '管理员真实姓名',
+  `phonenum` int(11) DEFAULT NULL COMMENT '管理员手机号',
+  `phone_active_token` varchar(30) DEFAULT NULL COMMENT '手机激活码',
+  `phone_status` int(1) NOT NULL DEFAULT '0' COMMENT '手机认证状态;0:未认证;1:认证;',
+  `email` varchar(50) DEFAULT NULL COMMENT '管理员邮箱',
+  `email_active_token` varchar(30) DEFAULT NULL COMMENT '邮箱激活码',
+  `email_status` int(1) NOT NULL DEFAULT '0' COMMENT '邮箱认证状态;0:未认证;1:认证;',
+  `is_forbidden` int(1) NOT NULL COMMENT '是否被禁用;0:未禁用;1:禁用;',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- ----------------------------
 -- Table structure for yiiad_log

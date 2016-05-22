@@ -5,8 +5,6 @@ return [
 	'language' => 'zh-CN',
 	//设置源语言
 	'sourceLanguage' => 'zh-CN',
-	//前后台的默认首页路由是一样的，所以在公共配置里设置
-	//'defaultRoute' => '/user/login',
 	//设置跳转的页面，$this->goHome()方法要的配置
 	//'homeUrl' => '',
 

@@ -1,32 +1,32 @@
 <?php
-
+/**
+ * @author shawn-zou <157962718@qq.com> 2016年5月22日
+ */
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
+/* @var $objLogin \backend\models\LoginForm */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('lang', '后台登录系统');
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
+<div class="admin-login">
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($objLogin, 'admin_name')->label('')->textInput(['placeholder' => Yii::t('lang', '登录名'), 'autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($objLogin, 'password')->label('')->passwordInput(['placeholder' => Yii::t('lang', '密码')]) ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <?= $form->field($objLogin, 'rememberMe')->checkbox() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton(Yii::t('lang', '登录'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

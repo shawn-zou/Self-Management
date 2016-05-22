@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author shawn-zou <157962718@qq.com> 2016年5月22日
+ */
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -12,10 +15,15 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+	//默认路由
+	'defaultRoute' => '/site/login',
+	//首页设置
+	'homeUrl' => ['site/index'],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'backend\models\Admin',
             'enableAutoLogin' => true,
+        	'loginUrl' => ['site/login'],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
