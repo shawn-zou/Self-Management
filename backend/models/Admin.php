@@ -143,7 +143,9 @@ class Admin extends Base implements IdentityInterface
     }
 
     /**
-     * 暂时还没搞清楚怎么用的，但貌似每次刷新页面都需要调用
+     * 从 \backend\controllers\SiteController login() Yii::$app->user->isGuest开始，
+     * 到@see \yii\web\User renewAuthStatus()
+     * 先检查session会话是否存在，存在的话，直接用session里的id来查询、更新数据
      */
     public static function findIdentity($id)
     {

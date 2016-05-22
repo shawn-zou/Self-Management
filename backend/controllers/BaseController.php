@@ -18,7 +18,7 @@ class BaseController extends Controller
 	public function behaviors()
 	{
 		return [
-			/* 'access' => [
+			'access' => [
 				'class' => AccessControl::className(),
 				'rules' => [
 					//只有site控制器可以在未登录时被访问
@@ -27,8 +27,14 @@ class BaseController extends Controller
 						'allow' => true,
 						'roles' => ['?'],
 					],
+					//除site的控制器要登录时才能访问
+					[
+						'controllers' => [],
+						'allow' => true,
+						'roles' => ['@'],
+					],
 				],
-			], */
+			],
 			'verbs' => [
 				'class' => VerbFilter::className(),
 				'actions' => [

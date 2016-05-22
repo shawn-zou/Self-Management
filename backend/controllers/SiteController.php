@@ -15,6 +15,8 @@ class SiteController extends BaseController
 {
 	/**
 	 * 管理员登录
+	 * 从Yii::$app->user->isGuest开始，
+	 * @see \yii\web\User renewAuthStatus()，有自动登录的流程，只要配置enableAutoLogin就行
 	 */
 	public function actionLogin()
 	{
