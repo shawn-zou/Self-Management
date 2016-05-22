@@ -3,13 +3,11 @@ namespace backend\controllers;
 
 use Yii;
 use backend\controllers\BaseController;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use backend\models\LoginForm;
 
 /**
- * @author shawn-zou <157962718@qq.com> 2016年5月22日
- * 暂时留作一些系统页面
+ * @author shawn-zou <157962718@qq.com> 2016年5月23日
+ * 主要是登录、退出，以免在未登录状态对Admin造成不必要的侵入
  */
 class SiteController extends BaseController
 {
@@ -48,34 +46,6 @@ class SiteController extends BaseController
 		Yii::$app->user->logout();
 		return $this->goHome();
 	}
-    /**
-     * @inheritdoc
-     */
-    /* public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    } */
 
     public function actionIndex()
     {

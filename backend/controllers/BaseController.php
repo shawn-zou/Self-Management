@@ -6,7 +6,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * @author shawn-zou <157962718@qq.com> 2016年5月22日
+ * @author shawn-zou <157962718@qq.com> 2016年5月23日
  * 公共操作备用
  */
 class BaseController extends Controller
@@ -33,6 +33,20 @@ class BaseController extends Controller
 						'allow' => true,
 						'roles' => ['@'],
 					],
+					/*
+					 * @todo 只有login操作可以在未登录时被访问，原本想直接写在site控制器里的，但会覆盖base的，后续再处理
+					 */
+					/* [
+						'actions' => ['login'],
+						'allow' => true,
+						'roles' => ['?'],
+					], */
+					//除login操作都要登录时才能访问
+					/* [
+						'actions' => ['index'],
+						'allow' => true,
+						'roles' => ['@'],
+					], */
 				],
 			],
 			'verbs' => [
